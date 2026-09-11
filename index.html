@@ -1,0 +1,2262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f1ea">
+<title>Work & Career — Vocabulary Practice</title>
+
+<style>
+:root {
+  --bg: #f7f4ef;
+  --card: #ffffff;
+  --text: #29313a;
+  --muted: #737b84;
+  --accent: #667f9b;
+  --accent-light: #e7edf3;
+  --success: #4f8a68;
+  --success-bg: #eaf5ee;
+  --error: #b85c5c;
+  --error-bg: #faeeee;
+  --border: #e0ddd7;
+  --shadow: 0 8px 30px rgba(45, 50, 55, .07);
+  --radius: 18px;
+}
+
+[data-theme="dark"] {
+  --bg: #202428;
+  --card: #2a2f34;
+  --text: #edf0f2;
+  --muted: #aab1b8;
+  --accent: #9db5ce;
+  --accent-light: #35414c;
+  --success: #79b48f;
+  --success-bg: #263a2e;
+  --error: #df8585;
+  --error-bg: #422d2d;
+  --border: #41474d;
+  --shadow: 0 8px 30px rgba(0,0,0,.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    Inter, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+
+button,
+select,
+textarea,
+input {
+  font: inherit;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+button:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(102,127,155,.3);
+  outline-offset: 2px;
+}
+
+/* ---------- APP ---------- */
+
+.app {
+  width: min(100% - 28px, 1000px);
+  margin: 0 auto;
+  padding: 24px 0 60px;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 5vw, 2.5rem);
+  line-height: 1.15;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+
+.level {
+  flex: 0 0 auto;
+  background: var(--accent-light);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+.top-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.icon-btn {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 8px 11px;
+  transition: .2s ease;
+}
+
+.icon-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* ---------- PROGRESS ---------- */
+
+.progress-wrap {
+  margin: 22px 0 18px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: .85rem;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+
+.progress-bar {
+  height: 9px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--border);
+}
+
+.progress-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #8097ad, #5f7996);
+  transition: width .4s ease;
+}
+
+/* ---------- BLOCK STATUS ---------- */
+
+.block-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 20px;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.block-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.block-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: .3s ease;
+}
+
+.block-dot.done {
+  background: var(--success);
+  transform: scale(1.15);
+}
+
+/* ---------- NAV ---------- */
+
+.step-nav {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.step-btn {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--muted);
+  border-radius: 12px;
+  min-height: 46px;
+  padding: 6px;
+  font-size: .78rem;
+  transition: .2s ease;
+}
+
+.step-btn:hover {
+  border-color: var(--accent);
+}
+
+.step-btn.active {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.step-btn.completed {
+  color: var(--success);
+}
+
+.step-number {
+  display: block;
+  font-weight: 800;
+}
+
+/* ---------- CARDS ---------- */
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(18px, 4vw, 30px);
+  margin-bottom: 18px;
+}
+
+.card-header {
+  margin-bottom: 22px;
+}
+
+.block-label {
+  color: var(--accent);
+  font-size: .78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+h2 {
+  margin: 4px 0 6px;
+  font-size: clamp(1.3rem, 4vw, 1.75rem);
+}
+
+.instruction {
+  color: var(--muted);
+  margin: 0;
+}
+
+.expression {
+  font-weight: 750;
+  color: var(--text);
+}
+
+.item {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+.item-number {
+  color: var(--muted);
+  font-size: .8rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+/* ---------- FORM ELEMENTS ---------- */
+
+select,
+textarea,
+input[type="text"] {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 11px;
+  padding: 10px 12px;
+  transition: .2s ease;
+}
+
+select {
+  margin-top: 8px;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.inline-select {
+  max-width: 100%;
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.speech-btn {
+  flex: 0 0 auto;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 9px 11px;
+}
+
+/* ---------- FEEDBACK ---------- */
+
+.feedback {
+  display: none;
+  margin-top: 7px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  font-size: .88rem;
+}
+
+.feedback.show {
+  display: block;
+}
+
+.feedback.correct {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.feedback.incorrect {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+.correct-field {
+  border-color: var(--success) !important;
+  background: var(--success-bg) !important;
+}
+
+.incorrect-field {
+  border-color: var(--error) !important;
+  background: var(--error-bg) !important;
+}
+
+.correct-answer {
+  margin-top: 5px;
+  font-size: .88rem;
+  color: var(--success);
+  font-weight: 650;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 11px 16px;
+  font-weight: 750;
+  transition: .2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-secondary {
+  background: var(--accent-light);
+  color: var(--text);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.btn-success {
+  background: var(--success);
+  color: white;
+}
+
+.btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- CONTINUE ---------- */
+
+.continue-area {
+  display: none;
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--success-bg);
+  border: 1px solid rgba(79,138,104,.25);
+}
+
+.continue-area.show {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.continue-title {
+  font-weight: 800;
+  color: var(--success);
+}
+
+.continue-text {
+  color: var(--muted);
+  font-size: .88rem;
+}
+
+/* ---------- CELEBRATION ---------- */
+
+.celebration {
+  position: fixed;
+  inset: auto 20px 20px auto;
+  z-index: 20;
+  max-width: min(360px, calc(100vw - 40px));
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+  padding: 15px 18px;
+  opacity: 0;
+  transform: translateY(15px) scale(.96);
+  pointer-events: none;
+}
+
+.celebration.show {
+  animation: celebrationIn .4s ease forwards;
+}
+
+@keyframes celebrationIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.celebration strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.confetti {
+  position: fixed;
+  z-index: 30;
+  pointer-events: none;
+  font-size: 18px;
+  animation: fall 900ms ease-out forwards;
+}
+
+@keyframes fall {
+  from {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(90px) rotate(180deg);
+  }
+}
+
+/* ---------- TIMER ---------- */
+
+.timer {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 15;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 999px;
+  padding: 7px 12px;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+/* ---------- MODEL ANSWERS ---------- */
+
+.model-answer {
+  display: none;
+  margin-top: 8px;
+  padding: 12px;
+  background: var(--accent-light);
+  border-radius: 11px;
+  color: var(--text);
+}
+
+.model-answer.show {
+  display: block;
+}
+
+/* ---------- FINAL ---------- */
+
+.final-score {
+  text-align: center;
+  padding: 25px 0;
+}
+
+.score-number {
+  font-size: clamp(3rem, 15vw, 5.5rem);
+  line-height: 1;
+  font-weight: 850;
+  color: var(--accent);
+}
+
+.score-label {
+  color: var(--muted);
+}
+
+.result-message {
+  font-size: 1.2rem;
+  font-weight: 750;
+  margin: 15px 0;
+}
+
+.breakdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 25px;
+}
+
+.breakdown div {
+  padding: 12px 7px;
+  background: var(--accent-light);
+  border-radius: 12px;
+}
+
+.breakdown strong {
+  display: block;
+  font-size: 1.15rem;
+}
+
+/* ---------- ERROR SHAKE ---------- */
+
+.shake {
+  animation: shake .3s ease;
+}
+
+@keyframes shake {
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 600px) {
+  .app {
+    width: min(100% - 20px, 1000px);
+    padding-top: 16px;
+  }
+
+  .step-nav {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .step-btn {
+    min-height: 42px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions .btn {
+    width: 100%;
+  }
+
+  .continue-area.show {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .continue-area .btn {
+    width: 100%;
+  }
+
+  .breakdown {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .timer {
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+@media print {
+  .top-actions,
+  .step-nav,
+  .timer,
+  .actions,
+  .continue-area,
+  .celebration,
+  .speech-btn {
+    display: none !important;
+  }
+
+  .screen {
+    display: block !important;
+    page-break-inside: avoid;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .model-answer {
+    display: block;
+  }
+
+  textarea,
+  input[type="text"],
+  select {
+    border: 1px solid #999;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+  <div class="header-top">
+    <div>
+      <div class="eyebrow">Vocabulary practice</div>
+      <h1>Work & Career</h1>
+      <p class="subtitle">Learn the expressions and use them in real situations.</p>
+    </div>
+
+    <div class="level">A2 → B1</div>
+  </div>
+
+  <div class="top-actions">
+    <button class="icon-btn" id="themeBtn" type="button">☾ Theme</button>
+    <button class="icon-btn" id="resetAllBtn" type="button">↻ Reset</button>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-info">
+    <span id="progressText">0 / 39 tasks</span>
+    <span id="progressPercent">0%</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+</div>
+
+<div class="block-status">
+  <span id="blockStatusText">✓ 0 / 6 blocks complete</span>
+  <div class="block-dots" id="blockDots"></div>
+</div>
+
+<nav class="step-nav" aria-label="Lesson blocks">
+  <button class="step-btn active" data-step="1">
+    <span class="step-number">01</span>
+    Know
+  </button>
+  <button class="step-btn" data-step="2">
+    <span class="step-number">02</span>
+    Context
+  </button>
+  <button class="step-btn" data-step="3">
+    <span class="step-number">03</span>
+    Complete
+  </button>
+  <button class="step-btn" data-step="4">
+    <span class="step-number">04</span>
+    Upgrade
+  </button>
+  <button class="step-btn" data-step="5">
+    <span class="step-number">05</span>
+    Nuance
+  </button>
+  <button class="step-btn" data-step="6">
+    <span class="step-number">06</span>
+    Make it yours
+  </button>
+</nav>
+
+<main>
+
+<!-- ======================================================
+     BLOCK 01
+====================================================== -->
+
+<section class="screen active" id="screen1">
+
+<div class="card">
+  <div class="card-header">
+    <div class="block-label">Block 01</div>
+    <h2>Know the language</h2>
+    <p class="instruction">
+      Choose the correct meaning for each expression.
+    </p>
+  </div>
+
+  <div id="block1Items"></div>
+
+  <div class="actions">
+    <button class="btn btn-primary" id="check1">Check answers</button>
+    <button class="btn btn-ghost" id="retry1">Try again</button>
+  </div>
+
+  <div class="continue-area" id="continue1">
+    <div>
+      <div class="continue-title">🎉 Great job!</div>
+      <div class="continue-text">Block 01 is complete.</div>
+    </div>
+    <button class="btn btn-success next-btn" data-next="2">Continue →</button>
+  </div>
+</div>
+
+</section>
+
+<!-- ======================================================
+     BLOCK 02
+====================================================== -->
+
+<section class="screen" id="screen2">
+
+<div class="card">
+  <div class="card-header">
+    <div class="block-label">Block 02</div>
+    <h2>Choose in context</h2>
+    <p class="instruction">
+      Choose the expression that fits the sentence.
+    </p>
+  </div>
+
+  <div id="block2Items"></div>
+
+  <div class="actions">
+    <button class="btn btn-primary" id="check2">Check answers</button>
+    <button class="btn btn-ghost" id="retry2">Try again</button>
+  </div>
+
+  <div class="continue-area" id="continue2">
+    <div>
+      <div class="continue-title">🎉 Great job!</div>
+      <div class="continue-text">Block 02 is complete.</div>
+    </div>
+    <button class="btn btn-success next-btn" data-next="3">Continue →</button>
+  </div>
+</div>
+
+</section>
+
+<!-- ======================================================
+     BLOCK 03
+====================================================== -->
+
+<section class="screen" id="screen3">
+
+<div class="card">
+  <div class="card-header">
+    <div class="block-label">Block 03</div>
+    <h2>Complete the thought</h2>
+    <p class="instruction">
+      Type the missing expression. Small differences in punctuation,
+      capital letters and spaces are okay.
+    </p>
+  </div>
+
+  <div id="block3Items"></div>
+
+  <div class="actions">
+    <button class="btn btn-primary" id="check3">Check answers</button>
+    <button class="btn btn-ghost" id="retry3">Try again</button>
+  </div>
+
+  <div class="continue-area" id="continue3">
+    <div>
+      <div class="continue-title">🎉 Excellent!</div>
+      <div class="continue-text">You know these expressions well.</div>
+    </div>
+    <button class="btn btn-success next-btn" data-next="4">Continue →</button>
+  </div>
+</div>
+
+</section>
+
+<!-- ======================================================
+     BLOCK 04
+====================================================== -->
+
+<section class="screen" id="screen4">
+
+<div class="card">
+  <div class="card-header">
+    <div class="block-label">Block 04</div>
+    <h2>Upgrade the English</h2>
+    <p class="instruction">
+      Rewrite each simple sentence using the expression in brackets.
+      There can be more than one good answer.
+    </p>
+  </div>
+
+  <div id="block4Items"></div>
+
+  <div class="actions">
+    <button class="btn btn-secondary" id="showModels">
+      Show model answers
+    </button>
+    <button class="btn btn-primary next-btn" data-next="5">
+      Continue →
+    </button>
+  </div>
+
+</div>
+
+</section>
+
+<!-- ======================================================
+     BLOCK 05
+====================================================== -->
+
+<section class="screen" id="screen5">
+
+<div class="card">
+  <div class="card-header">
+    <div class="block-label">Block 05</div>
+    <h2>Nuance challenge</h2>
+    <p class="instruction">
+      What does the speaker really mean?
+    </p>
+  </div>
+
+  <div id="block5Items"></div>
+
+  <div class="actions">
+    <button class="btn btn-primary" id="check5">Check answers</button>
+    <button class="btn btn-ghost" id="retry5">Try again</button>
+  </div>
+
+  <div class="continue-area" id="continue5">
+    <div>
+      <div class="continue-title">🎉 Well done!</div>
+      <div class="continue-text">You understand the expressions in context.</div>
+    </div>
+    <button class="btn btn-success next-btn" data-next="6">Continue →</button>
+  </div>
+</div>
+
+</section>
+
+<!-- ======================================================
+     BLOCK 06
+====================================================== -->
+
+<section class="screen" id="screen6">
+
+<div class="card">
+  <div class="card-header">
+    <div class="block-label">Block 06</div>
+    <h2>Make it yours</h2>
+    <p class="instruction">
+      Answer in 2–4 sentences. There are no automatic right or wrong answers.
+    </p>
+  </div>
+
+  <div id="block6Items"></div>
+
+  <div class="actions">
+    <button class="btn btn-primary" id="finishLesson">
+      Finish lesson
+    </button>
+  </div>
+</div>
+
+</section>
+
+<!-- ======================================================
+     FINAL
+====================================================== -->
+
+<section class="screen" id="finalScreen">
+
+<div class="card">
+  <div class="final-score">
+
+    <div class="block-label">Lesson complete</div>
+
+    <h2>Your result</h2>
+
+    <div class="score-number" id="finalScore">0/31</div>
+
+    <div class="score-label">auto-checked tasks</div>
+
+    <div class="result-message" id="resultMessage"></div>
+
+    <div class="breakdown">
+      <div>
+        <strong id="score1">0/9</strong>
+        Block 01
+      </div>
+      <div>
+        <strong id="score2">0/9</strong>
+        Block 02
+      </div>
+      <div>
+        <strong id="score3">0/9</strong>
+        Block 03
+      </div>
+      <div>
+        <strong id="score5">0/4</strong>
+        Block 05
+      </div>
+    </div>
+
+    <div class="actions" style="justify-content:center">
+      <button class="btn btn-primary" id="exportBtn">
+        Export result
+      </button>
+
+      <button class="btn btn-secondary" id="printBtn">
+        Print
+      </button>
+
+      <button class="btn btn-ghost" id="backToLesson">
+        Back to lesson
+      </button>
+    </div>
+
+  </div>
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<div class="timer" id="timer">00:00</div>
+
+<div class="celebration" id="celebration" aria-live="polite">
+  <strong id="celebrationTitle">🎉 Great job!</strong>
+  <span id="celebrationText">Block complete.</span>
+</div>
+
+<script>
+
+/* ==========================================================
+   DATA
+========================================================== */
+
+const expressions = [
+  "9-to-5",
+  "my job doesn't let me work from home",
+  "got a degree in",
+  "developing my own product",
+  "in a very hot area",
+  "well-paid",
+  "works long hours",
+  "works alone",
+  "employer"
+];
+
+const meanings = [
+  "a normal office job, usually with regular daytime hours",
+  "my job requires me to work at the workplace",
+  "finished university with a particular subject as my degree",
+  "creating and improving a product that I created myself",
+  "in a field that is very popular and has a lot of interest",
+  "earning a good salary",
+  "works for many hours, often more than usual",
+  "does the job without other people around",
+  "a person or company that gives you a job"
+];
+
+/*
+  Block 01:
+  The correct meaning for expression i is meanings[i].
+*/
+
+const block2 = [
+  {
+    sentence: "I usually start work at 9 a.m. and finish at 5 p.m. I have a ___ job.",
+    answer: 0,
+    options: ["9-to-5", "well-paid", "employer"]
+  },
+  {
+    sentence: "I would love to work from my kitchen, but ___.",
+    answer: 0,
+    options: [
+      "my job doesn't let me work from home",
+      "my employer works alone",
+      "I got a degree in"
+    ]
+  },
+  {
+    sentence: "Anna studied economics at university. She ___ economics.",
+    answer: 0,
+    options: [
+      "got a degree in",
+      "works long hours",
+      "is in a very hot area"
+    ]
+  },
+  {
+    sentence: "The company is ___ a new product for young people.",
+    answer: 0,
+    options: [
+      "developing its own product",
+      "working alone",
+      "getting a degree in"
+    ]
+  },
+  {
+    sentence: "AI is ___ at the moment. Many companies are interested in it.",
+    answer: 0,
+    options: [
+      "in a very hot area",
+      "well-paid",
+      "9-to-5"
+    ]
+  },
+  {
+    sentence: "She earns a lot of money. Her job is very ___.",
+    answer: 0,
+    options: [
+      "well-paid",
+      "alone",
+      "long hours"
+    ]
+  },
+  {
+    sentence: "Tom often stays at the office until 9 p.m. He ___.",
+    answer: 0,
+    options: [
+      "works long hours",
+      "works alone",
+      "got a degree in"
+    ]
+  },
+  {
+    sentence: "I don't like teamwork. I prefer to ___.",
+    answer: 0,
+    options: [
+      "work alone",
+      "work long hours",
+      "get a degree in"
+    ]
+  },
+  {
+    sentence: "My ___ is a small IT company.",
+    answer: 0,
+    options: [
+      "employer",
+      "9-to-5",
+      "degree"
+    ]
+  }
+];
+
+/*
+  The correct answer is intentionally shuffled in each question.
+*/
+
+block2.forEach(item => {
+  const correct = item.options[0];
+  const shuffled = [...item.options].sort(() => Math.random() - .5);
+  item.options = shuffled;
+  item.correctText = correct;
+});
+
+const block3 = [
+  {
+    sentence: "I don't have to work at home. __________________________.",
+    answer: "my job doesn't let me work from home",
+    accepted: [
+      "my job doesn't let me work from home",
+      "my job does not let me work from home"
+    ]
+  },
+  {
+    sentence: "She finished university with a degree in history. She __________________________.",
+    answer: "got a degree in",
+    accepted: ["got a degree in"]
+  },
+  {
+    sentence: "I am creating my own product for children. I am __________________________.",
+    answer: "developing my own product",
+    accepted: ["developing my own product"]
+  },
+  {
+    sentence: "Technology is very popular right now. It is __________________________.",
+    answer: "in a very hot area",
+    accepted: ["in a very hot area"]
+  },
+  {
+    sentence: "He earns a good salary. His job is __________________________.",
+    answer: "well-paid",
+    accepted: ["well-paid", "well paid"]
+  },
+  {
+    sentence: "She often works for ten hours a day. She __________________________.",
+    answer: "works long hours",
+    accepted: ["works long hours"]
+  },
+  {
+    sentence: "I don't work with a team. I __________________________.",
+    answer: "work alone",
+    accepted: ["work alone", "works alone"]
+  },
+  {
+    sentence: "My company gives me my salary every month. It is my __________________________.",
+    answer: "employer",
+    accepted: ["employer"]
+  },
+  {
+    sentence: "I work from 9 a.m. to 5 p.m. I have a __________________________.",
+    answer: "9-to-5",
+    accepted: ["9-to-5", "9 to 5"]
+  }
+];
+
+const block4 = [
+  {
+    prompt: "I have a normal office schedule. (9-to-5)",
+    model: "I have a 9-to-5."
+  },
+  {
+    prompt: "I must work in the office. (my job doesn't let me work from home)",
+    model: "My job doesn't let me work from home."
+  },
+  {
+    prompt: "She finished university with a degree in economics. (got a degree in)",
+    model: "She got a degree in economics."
+  },
+  {
+    prompt: "I am creating my own product. (developing my own product)",
+    model: "I am developing my own product."
+  }
+];
+
+const block5 = [
+  {
+    quote: "\"My job is well-paid, so I don't want to leave.\"",
+    options: [
+      "The speaker likes the salary.",
+      "The speaker hates working.",
+      "The speaker works alone."
+    ],
+    answer: 0
+  },
+  {
+    quote: "\"My employer says I have to be in the office every day.\"",
+    options: [
+      "The speaker can work anywhere.",
+      "The speaker has to work at the workplace.",
+      "The speaker works long hours."
+    ],
+    answer: 1
+  },
+  {
+    quote: "\"I don't really like meetings. I work alone most of the time.\"",
+    options: [
+      "The speaker usually works independently.",
+      "The speaker has a 9-to-5.",
+      "The speaker is an employer."
+    ],
+    answer: 0
+  },
+  {
+    quote: "\"I get home at 9 p.m. because I often work until late.\"",
+    options: [
+      "The speaker works long hours.",
+      "The speaker works from home.",
+      "The speaker has a degree."
+    ],
+    answer: 0
+  }
+];
+
+const block6 = [
+  {
+    expression: "9-to-5",
+    question: "Would you like to have a 9-to-5 job? Why or why not?"
+  },
+  {
+    expression: "well-paid",
+    question: "What makes a job well-paid in your opinion?"
+  },
+  {
+    expression: "employer",
+    question: "What is important to you in an employer?"
+  },
+  {
+    expression: "works alone",
+    question: "Would you like to work alone? Why or why not?"
+  }
+];
+
+
+/* ==========================================================
+   STATE
+========================================================== */
+
+const STORAGE_KEY = "hw_work_and_career_a2_b1";
+
+let state = {
+  answers: {},
+  checked: {},
+  scores: {},
+  theme: null,
+  elapsed: 0,
+  currentStep: 1
+};
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  updateProgress();
+}
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (saved) {
+      state = {
+        ...state,
+        ...JSON.parse(saved)
+      };
+    }
+  } catch (e) {
+    console.warn("Could not restore saved state.");
+  }
+
+  applyTheme();
+}
+
+
+/* ==========================================================
+   RENDER BLOCKS
+========================================================== */
+
+function renderBlock1() {
+  const container = document.getElementById("block1Items");
+
+  const shuffledMeanings = [...meanings].sort(() => Math.random() - .5);
+
+  container.innerHTML = expressions.map((expression, i) => `
+    <div class="item" data-item="b1-${i}">
+      <div class="item-number">${i + 1} / ${expressions.length}</div>
+
+      <div class="input-row">
+        <span class="expression">${expression}</span>
+        <button
+          class="speech-btn"
+          type="button"
+          data-speak="${expression}"
+          aria-label="Listen to ${expression}"
+        >🔊</button>
+      </div>
+
+      <select
+        data-answer="b1-${i}"
+        aria-label="Meaning for ${expression}"
+      >
+        <option value="">Choose a meaning...</option>
+        ${shuffledMeanings.map((meaning, m) =>
+          `<option value="${m}">${meaning}</option>`
+        ).join("")}
+      </select>
+
+      <div class="feedback" data-feedback="b1-${i}"></div>
+    </div>
+  `).join("");
+}
+
+function renderBlock2() {
+  const container = document.getElementById("block2Items");
+
+  container.innerHTML = block2.map((item, i) => `
+    <div class="item" data-item="b2-${i}">
+      <div class="item-number">${i + 1} / ${block2.length}</div>
+
+      <div>${item.sentence}</div>
+
+      <select data-answer="b2-${i}">
+        <option value="">Choose...</option>
+        ${item.options.map(option =>
+          `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`
+        ).join("")}
+      </select>
+
+      <div class="feedback" data-feedback="b2-${i}"></div>
+    </div>
+  `).join("");
+}
+
+function renderBlock3() {
+  const container = document.getElementById("block3Items");
+
+  container.innerHTML = block3.map((item, i) => `
+    <div class="item" data-item="b3-${i}">
+      <div class="item-number">${i + 1} / ${block3.length}</div>
+
+      <div style="margin-bottom:8px">${item.sentence}</div>
+
+      <div class="input-row">
+        <input
+          type="text"
+          data-answer="b3-${i}"
+          autocomplete="off"
+          aria-label="Answer ${i + 1}"
+        >
+        <button
+          class="speech-btn"
+          type="button"
+          data-speak="${item.answer}"
+          aria-label="Listen to the answer"
+        >🔊</button>
+      </div>
+
+      <div class="feedback" data-feedback="b3-${i}"></div>
+    </div>
+  `).join("");
+}
+
+function renderBlock4() {
+  const container = document.getElementById("block4Items");
+
+  container.innerHTML = block4.map((item, i) => `
+    <div class="item">
+      <div class="item-number">${i + 1} / ${block4.length}</div>
+
+      <div style="margin-bottom:10px">
+        ${item.prompt}
+      </div>
+
+      <textarea
+        data-answer="b4-${i}"
+        placeholder="Write your version..."
+        aria-label="Your answer ${i + 1}"
+      ></textarea>
+
+      <div class="model-answer" data-model="b4-${i}">
+        <strong>Model:</strong> ${item.model}
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderBlock5() {
+  const container = document.getElementById("block5Items");
+
+  container.innerHTML = block5.map((item, i) => `
+    <div class="item" data-item="b5-${i}">
+      <div class="item-number">${i + 1} / ${block5.length}</div>
+
+      <div style="margin-bottom:10px">
+        <strong>${item.quote}</strong>
+      </div>
+
+      <select data-answer="b5-${i}">
+        <option value="">Choose...</option>
+        ${item.options.map((option, j) =>
+          `<option value="${j}">${option}</option>`
+        ).join("")}
+      </select>
+
+      <div class="feedback" data-feedback="b5-${i}"></div>
+    </div>
+  `).join("");
+}
+
+function renderBlock6() {
+  const container = document.getElementById("block6Items");
+
+  container.innerHTML = block6.map((item, i) => `
+    <div class="item">
+      <div class="item-number">${i + 1} / ${block6.length}</div>
+
+      <div style="margin-bottom:9px">
+        <strong>${item.question}</strong>
+      </div>
+
+      <div class="expression" style="margin-bottom:7px">
+        Use: ${item.expression}
+      </div>
+
+      <textarea
+        data-answer="b6-${i}"
+        placeholder="Write 2–4 sentences..."
+        aria-label="Your answer ${i + 1}"
+      ></textarea>
+    </div>
+  `).join("");
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+
+/* ==========================================================
+   RESTORE INPUTS
+========================================================== */
+
+function restoreAnswers() {
+  document.querySelectorAll("[data-answer]").forEach(el => {
+    const key = el.dataset.answer;
+
+    if (Object.prototype.hasOwnProperty.call(state.answers, key)) {
+      el.value = state.answers[key];
+    }
+  });
+
+  updateProgress();
+}
+
+
+/* ==========================================================
+   INPUT AUTOSAVE
+========================================================== */
+
+document.addEventListener("input", e => {
+  const key = e.target.dataset?.answer;
+
+  if (!key) return;
+
+  state.answers[key] = e.target.value;
+  saveState();
+});
+
+document.addEventListener("change", e => {
+  const key = e.target.dataset?.answer;
+
+  if (!key) return;
+
+  state.answers[key] = e.target.value;
+  saveState();
+});
+
+
+/* ==========================================================
+   SMART NORMALIZATION FOR BLOCK 03
+========================================================== */
+
+function normalizeAnswer(text) {
+  return String(text || "")
+    .toLowerCase()
+    .replace(/[’‘]/g, "'")
+    .replace(/[–—]/g, "-")
+    .replace(/[.,!?;:]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function answerMatches(input, acceptedAnswers) {
+  const normalizedInput = normalizeAnswer(input);
+
+  return acceptedAnswers.some(answer =>
+    normalizedInput === normalizeAnswer(answer)
+  );
+}
+
+
+/* ==========================================================
+   CHECK BLOCK 01
+========================================================== */
+
+function checkBlock1() {
+  let score = 0;
+
+  expressions.forEach((_, i) => {
+    const select = document.querySelector(`[data-answer="b1-${i}"]`);
+    const feedback = document.querySelector(`[data-feedback="b1-${i}"]`);
+
+    const correct = Number(select.value) === i;
+
+    select.classList.remove("correct-field", "incorrect-field");
+    feedback.className = "feedback show";
+
+    if (correct) {
+      score++;
+      select.classList.add("correct-field");
+      feedback.classList.add("correct");
+      feedback.textContent = "✓ Correct!";
+    } else {
+      select.classList.add("incorrect-field");
+      feedback.classList.add("incorrect");
+      feedback.innerHTML =
+        `Not quite. <span class="correct-answer">${meanings[i]}</span>`;
+    }
+  });
+
+  state.scores[1] = score;
+  state.checked[1] = true;
+
+  saveState();
+
+  if (score === 9) {
+    completeBlock(1);
+  } else {
+    showCelebration(
+      "Keep going!",
+      `${score}/9 correct. You can fix the mistakes and try again.`
+    );
+  }
+}
+
+function retryBlock1() {
+  expressions.forEach((_, i) => {
+    const select = document.querySelector(`[data-answer="b1-${i}"]`);
+    const feedback = document.querySelector(`[data-feedback="b1-${i}"]`);
+
+    select.value = "";
+    select.classList.remove("correct-field", "incorrect-field");
+
+    feedback.className = "feedback";
+    feedback.textContent = "";
+
+    delete state.answers[`b1-${i}`];
+  });
+
+  state.scores[1] = 0;
+  state.checked[1] = false;
+
+  saveState();
+}
+
+
+/* ==========================================================
+   CHECK BLOCK 02
+========================================================== */
+
+function checkBlock2() {
+  let score = 0;
+
+  block2.forEach((item, i) => {
+    const select = document.querySelector(`[data-answer="b2-${i}"]`);
+    const feedback = document.querySelector(`[data-feedback="b2-${i}"]`);
+
+    const correct = select.value === item.correctText;
+
+    select.classList.remove("correct-field", "incorrect-field");
+    feedback.className = "feedback show";
+
+    if (correct) {
+      score++;
+      select.classList.add("correct-field");
+      feedback.classList.add("correct");
+      feedback.textContent = "✓ Correct!";
+    } else {
+      select.classList.add("incorrect-field");
+      feedback.classList.add("incorrect");
+      feedback.innerHTML =
+        `Not quite. <span class="correct-answer">${item.correctText}</span>`;
+    }
+  });
+
+  state.scores[2] = score;
+  state.checked[2] = true;
+
+  saveState();
+
+  if (score === 9) {
+    completeBlock(2);
+  } else {
+    showCelebration(
+      "Almost!",
+      `${score}/9 correct. Have another look at the context.`
+    );
+  }
+}
+
+function retryBlock2() {
+  block2.forEach((_, i) => {
+    const select = document.querySelector(`[data-answer="b2-${i}"]`);
+    const feedback = document.querySelector(`[data-feedback="b2-${i}"]`);
+
+    select.value = "";
+    select.classList.remove("correct-field", "incorrect-field");
+
+    feedback.className = "feedback";
+    feedback.textContent = "";
+
+    delete state.answers[`b2-${i}`];
+  });
+
+  state.scores[2] = 0;
+  state.checked[2] = false;
+
+  saveState();
+}
+
+
+/* ==========================================================
+   CHECK BLOCK 03
+========================================================== */
+
+function checkBlock3() {
+  let score = 0;
+
+  block3.forEach((item, i) => {
+    const input = document.querySelector(`[data-answer="b3-${i}"]`);
+    const feedback = document.querySelector(`[data-feedback="b3-${i}"]`);
+
+    const correct = answerMatches(input.value, item.accepted);
+
+    input.classList.remove("correct-field", "incorrect-field");
+    feedback.className = "feedback show";
+
+    if (correct) {
+      score++;
+      input.classList.add("correct-field");
+      feedback.classList.add("correct");
+      feedback.textContent = "✓ Correct!";
+    } else {
+      input.classList.add("incorrect-field");
+      feedback.classList.add("incorrect");
+      feedback.innerHTML =
+        `Almost. The expression we need is:
+        <span class="correct-answer">${item.answer}</span>`;
+      input.classList.add("shake");
+
+      setTimeout(() => input.classList.remove("shake"), 350);
+    }
+  });
+
+  state.scores[3] = score;
+  state.checked[3] = true;
+
+  saveState();
+
+  if (score === 9) {
+    completeBlock(3);
+  } else {
+    showCelebration(
+      "Almost!",
+      `${score}/9 correct. Check the red answers and try again.`
+    );
+  }
+}
+
+function retryBlock3() {
+  block3.forEach((_, i) => {
+    const input = document.querySelector(`[data-answer="b3-${i}"]`);
+    const feedback = document.querySelector(`[data-feedback="b3-${i}"]`);
+
+    input.value = "";
+    input.classList.remove("correct-field", "incorrect-field", "shake");
+
+    feedback.className = "feedback";
+    feedback.textContent = "";
+
+    delete state.answers[`b3-${i}`];
+  });
+
+  state.scores[3] = 0;
+  state.checked[3] = false;
+
+  saveState();
+}
+
+
+/* ==========================================================
+   CHECK BLOCK 05
+========================================================== */
+
+function checkBlock5() {
+  let score = 0;
+
+  block5.forEach((item, i) => {
+    const select = document.querySelector(`[data-answer="b5-${i}"]`);
+    const feedback = document.querySelector(`[data-feedback="b5-${i}"]`);
+
+    const correct = Number(select.value) === item.answer;
+
+    select.classList.remove("correct-field", "incorrect-field");
+    feedback.className = "feedback show";
+
+    if (correct) {
+      score++;
+      select.classList.add("correct-field");
+      feedback.classList.add("correct");
+      feedback.textContent = "✓ Correct!";
+    } else {
+      select.classList.add("incorrect-field");
+      feedback.classList.add("incorrect");
+      feedback.innerHTML =
+        `Not quite. <span class="correct-answer">${item.options[item.answer]}</span>`;
+    }
+  });
+
+  state.scores[5] = score;
+  state.checked[5] = true;
+
+  saveState();
+
+  if (score === 4) {
+    completeBlock(5);
+  } else {
+    showCelebration(
+      "Good try!",
+      `${score}/4 correct. Think about what the speaker means.`
+    );
+  }
+}
+
+function retryBlock5() {
+  block5.forEach((_, i) => {
+    const select = document.querySelector(`[data-answer="b5-${i}"]`);
+    const feedback = document.querySelector(`[data-feedback="b5-${i}"]`);
+
+    select.value = "";
+    select.classList.remove("correct-field", "incorrect-field");
+
+    feedback.className = "feedback";
+    feedback.textContent = "";
+
+    delete state.answers[`b5-${i}`];
+  });
+
+  state.scores[5] = 0;
+  state.checked[5] = false;
+
+  saveState();
+}
+
+
+/* ==========================================================
+   BLOCK COMPLETION
+========================================================== */
+
+function isBlockComplete(step) {
+  return (
+    step === 4 ||
+    step === 6 ||
+    state.scores[step] === getBlockMax(step)
+  );
+}
+
+function getBlockMax(step) {
+  if (step === 1 || step === 2 || step === 3) return 9;
+  if (step === 5) return 4;
+  return 0;
+}
+
+function completeBlock(step) {
+  state.checked[step] = true;
+  saveState();
+
+  document.querySelectorAll(".step-btn").forEach(btn => {
+    if (Number(btn.dataset.step) === step) {
+      btn.classList.add("completed");
+      btn.innerHTML =
+        `<span class="step-number">✓ ${String(step).padStart(2, "0")}</span>${btn.textContent.replace(/✓ \d\d/, "").trim()}`;
+    }
+  });
+
+  const continueArea = document.getElementById(`continue${step}`);
+
+  if (continueArea) {
+    continueArea.classList.add("show");
+  }
+
+  showCelebration(
+    "🎉 Great job!",
+    `Block ${String(step).padStart(2, "0")} is complete.`
+  );
+
+  makeConfetti();
+  updateProgress();
+}
+
+
+/* ==========================================================
+   CELEBRATION
+========================================================== */
+
+let celebrationTimeout;
+
+function showCelebration(title, text) {
+  const box = document.getElementById("celebration");
+
+  document.getElementById("celebrationTitle").textContent = title;
+  document.getElementById("celebrationText").textContent = text;
+
+  box.classList.remove("show");
+  void box.offsetWidth;
+  box.classList.add("show");
+
+  clearTimeout(celebrationTimeout);
+
+  celebrationTimeout = setTimeout(() => {
+    box.classList.remove("show");
+  }, 2600);
+}
+
+function makeConfetti() {
+  const symbols = ["✦", "•", "✧", "★", "·"];
+
+  for (let i = 0; i < 12; i++) {
+    const el = document.createElement("span");
+
+    el.className = "confetti";
+    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+    el.style.left = `${35 + Math.random() * 30}%`;
+    el.style.top = `${25 + Math.random() * 15}%`;
+    el.style.animationDelay = `${Math.random() * 200}ms`;
+
+    document.body.appendChild(el);
+
+    setTimeout(() => el.remove(), 1200);
+  }
+}
+
+
+/* ==========================================================
+   PROGRESS
+========================================================== */
+
+function answeredCount() {
+  return Object.values(state.answers)
+    .filter(value => String(value).trim() !== "")
+    .length;
+}
+
+function updateProgress() {
+  const total = 39;
+  const answered = answeredCount();
+  const percent = Math.round(answered / total * 100);
+
+  document.getElementById("progressText").textContent =
+    `${answered} / ${total} tasks`;
+
+  document.getElementById("progressPercent").textContent =
+    `${percent}%`;
+
+  document.getElementById("progressFill").style.width =
+    `${percent}%`;
+
+  const completeCount =
+    [1, 2, 3, 4, 5, 6].filter(isBlockComplete).length;
+
+  document.getElementById("blockStatusText").textContent =
+    `✓ ${completeCount} / 6 blocks complete`;
+
+  const dots = document.getElementById("blockDots");
+
+  dots.innerHTML = [1,2,3,4,5,6]
+    .map(step =>
+      `<span class="block-dot ${isBlockComplete(step) ? "done" : ""}"></span>`
+    )
+    .join("");
+
+  document.querySelectorAll(".step-btn").forEach(btn => {
+    const step = Number(btn.dataset.step);
+
+    if (isBlockComplete(step)) {
+      btn.classList.add("completed");
+    }
+  });
+}
+
+
+/* ==========================================================
+   NAVIGATION
+========================================================== */
+
+function showStep(step) {
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+
+  const screen = document.getElementById(
+    step === "final" ? "finalScreen" : `screen${step}`
+  );
+
+  screen.classList.add("active");
+
+  document.querySelectorAll(".step-btn").forEach(btn => {
+    btn.classList.toggle(
+      "active",
+      Number(btn.dataset.step) === Number(step)
+    );
+  });
+
+  if (step !== "final") {
+    state.currentStep = Number(step);
+    saveState();
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+document.querySelectorAll(".step-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    showStep(Number(btn.dataset.step));
+  });
+});
+
+document.querySelectorAll(".next-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    showStep(Number(btn.dataset.next));
+  });
+});
+
+
+/* ==========================================================
+   MODEL ANSWERS
+========================================================== */
+
+document.getElementById("showModels").addEventListener("click", () => {
+  document.querySelectorAll(".model-answer").forEach(el => {
+    el.classList.add("show");
+  });
+});
+
+
+/* ==========================================================
+   FINISH LESSON
+========================================================== */
+
+document.getElementById("finishLesson").addEventListener("click", () => {
+  showFinalScreen();
+});
+
+function showFinalScreen() {
+  const score1 = state.scores[1] || 0;
+  const score2 = state.scores[2] || 0;
+  const score3 = state.scores[3] || 0;
+  const score5 = state.scores[5] || 0;
+
+  const total = score1 + score2 + score3 + score5;
+
+  document.getElementById("finalScore").textContent =
+    `${total}/31`;
+
+  document.getElementById("score1").textContent = `${score1}/9`;
+  document.getElementById("score2").textContent = `${score2}/9`;
+  document.getElementById("score3").textContent = `${score3}/9`;
+  document.getElementById("score5").textContent = `${score5}/4`;
+
+  let message = "";
+
+  if (total >= 28) {
+    message = "🌟 Excellent! You really know these expressions.";
+  } else if (total >= 23) {
+    message = "👏 Good job! You have a strong understanding of the vocabulary.";
+  } else if (total >= 17) {
+    message = "🙂 Good start! A little more practice will help.";
+  } else {
+    message = "💪 Keep practising — you are building your vocabulary step by step.";
+  }
+
+  document.getElementById("resultMessage").textContent = message;
+
+  showStep("final");
+}
+
+
+/* ==========================================================
+   EXPORT
+========================================================== */
+
+document.getElementById("exportBtn").addEventListener("click", () => {
+  const score =
+    (state.scores[1] || 0) +
+    (state.scores[2] || 0) +
+    (state.scores[3] || 0) +
+    (state.scores[5] || 0);
+
+  const date = new Date().toLocaleString();
+
+  let text = `WORK & CAREER — VOCABULARY PRACTICE
+
+Date: ${date}
+Score: ${score}/31
+
+BLOCK 01: ${state.scores[1] || 0}/9
+BLOCK 02: ${state.scores[2] || 0}/9
+BLOCK 03: ${state.scores[3] || 0}/9
+BLOCK 05: ${state.scores[5] || 0}/4
+
+OPEN ANSWERS
+
+BLOCK 04
+`;
+
+  block4.forEach((item, i) => {
+    text += `\n${i + 1}. ${item.prompt}\n`;
+    text += `Answer: ${state.answers[`b4-${i}`] || "(empty)"}\n`;
+  });
+
+  text += `\nBLOCK 06\n`;
+
+  block6.forEach((item, i) => {
+    text += `\n${i + 1}. ${item.question}\n`;
+    text += `Expression: ${item.expression}\n`;
+    text += `Answer: ${state.answers[`b6-${i}`] || "(empty)"}\n`;
+  });
+
+  const blob = new Blob([text], {
+    type: "text/plain;charset=utf-8"
+  });
+
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "work-and-career-result.txt";
+  a.click();
+
+  URL.revokeObjectURL(url);
+});
+
+
+/* ==========================================================
+   PRINT
+========================================================== */
+
+document.getElementById("printBtn").addEventListener("click", () => {
+  window.print();
+});
+
+document.getElementById("backToLesson").addEventListener("click", () => {
+  showStep(state.currentStep || 1);
+});
+
+
+/* ==========================================================
+   SPEECH
+========================================================== */
+
+document.addEventListener("click", e => {
+  const button = e.target.closest("[data-speak]");
+
+  if (!button) return;
+
+  if (!("speechSynthesis" in window)) return;
+
+  const text = button.dataset.speak;
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "en-GB";
+  utterance.rate = .85;
+
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utterance);
+});
+
+
+/* ==========================================================
+   THEME
+========================================================== */
+
+function applyTheme() {
+  let theme = state.theme;
+
+  if (!theme) {
+    theme =
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+  }
+
+  document.documentElement.dataset.theme =
+    theme === "dark" ? "dark" : "light";
+
+  document.getElementById("themeBtn").textContent =
+    theme === "dark" ? "☀ Light" : "☾ Dark";
+}
+
+document.getElementById("themeBtn").addEventListener("click", () => {
+  const current =
+    document.documentElement.dataset.theme || "light";
+
+  state.theme = current === "dark" ? "light" : "dark";
+
+  applyTheme();
+  saveState();
+});
+
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+document.getElementById("resetAllBtn").addEventListener("click", () => {
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload();
+});
+
+
+/* ==========================================================
+   TIMER
+========================================================== */
+
+let lastVisibleTime = Date.now();
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60)
+    .toString()
+    .padStart(2, "0");
+
+  const secs = Math.floor(seconds % 60)
+    .toString()
+    .padStart(2, "0");
+
+  return `${mins}:${secs}`;
+}
+
+function updateTimer() {
+  if (document.hidden) return;
+
+  const now = Date.now();
+  const delta = Math.floor((now - lastVisibleTime) / 1000);
+
+  if (delta > 0) {
+    state.elapsed += delta;
+    lastVisibleTime = now;
+
+    document.getElementById("timer").textContent =
+      formatTime(state.elapsed);
+
+    saveState();
+  }
+}
+
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) {
+    lastVisibleTime = Date.now();
+  }
+});
+
+setInterval(updateTimer, 1000);
+
+
+/* ==========================================================
+   CHECK BUTTONS
+========================================================== */
+
+document.getElementById("check1")
+  .addEventListener("click", checkBlock1);
+
+document.getElementById("retry1")
+  .addEventListener("click", retryBlock1);
+
+document.getElementById("check2")
+  .addEventListener("click", checkBlock2);
+
+document.getElementById("retry2")
+  .addEventListener("click", retryBlock2);
+
+document.getElementById("check3")
+  .addEventListener("click", checkBlock3);
+
+document.getElementById("retry3")
+  .addEventListener("click", retryBlock3);
+
+document.getElementById("check5")
+  .addEventListener("click", checkBlock5);
+
+document.getElementById("retry5")
+  .addEventListener("click", retryBlock5);
+
+
+/* ==========================================================
+   INITIALIZATION
+========================================================== */
+
+renderBlock1();
+renderBlock2();
+renderBlock3();
+renderBlock4();
+renderBlock5();
+renderBlock6();
+
+loadState();
+restoreAnswers();
+
+document.getElementById("timer").textContent =
+  formatTime(state.elapsed);
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
