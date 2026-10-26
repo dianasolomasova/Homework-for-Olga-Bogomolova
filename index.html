@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>English Lesson — A Big Change</title>
+<title>English Lesson — The Event Planner</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -68,34 +68,27 @@
     border-bottom: 2px solid #edf2f7;
   }
 
-  .dialogue {
+  .text-box {
     background: #f7fafc;
     padding: 20px;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 16px;
+    line-height: 1.8;
+    border-left: 4px solid #667eea;
   }
-  .dialogue p { margin-bottom: 12px; }
-  .speaker {
-    font-weight: 700;
-    color: #667eea;
-    margin-right: 6px;
-  }
-  .phrase {
-    background: #fef3c7;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: 600;
-    color: #92400e;
-  }
+  .text-box p { margin-bottom: 16px; }
+  .text-box p:last-child { margin-bottom: 0; }
+  .text-box b { color: #2d3748; }
 
   .task-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px;
+    padding: 12px;
     border-radius: 8px;
     margin-bottom: 8px;
     background: #f7fafc;
+    flex-wrap: wrap;
   }
   .task-item input, .task-item select {
     padding: 8px;
@@ -109,15 +102,23 @@
   .task-item input:focus, .task-item select:focus {
     border-color: #667eea;
   }
-  .task-item input {
-    flex: 1;
-  }
-  .task-item select {
-    min-width: 120px;
-    cursor: pointer;
-  }
+  .task-item input { flex: 1; min-width: 120px; }
+  .task-item select { min-width: 180px; cursor: pointer; }
   .task-item.correct { background: #c6f6d5; }
   .task-item.wrong { background: #fed7d7; }
+
+  .correct-answer {
+    font-size: 13px;
+    color: #2f855a;
+    font-weight: 600;
+    background: #f0fff4;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border-left: 3px solid #38a169;
+    width: 100%;
+    margin-top: 4px;
+  }
+  .correct-answer::before { content: "✓ Правильно: "; }
 
   .tf-item {
     display: flex;
@@ -127,8 +128,9 @@
     border-radius: 8px;
     margin-bottom: 8px;
     background: #f7fafc;
+    flex-wrap: wrap;
   }
-  .tf-item span { flex: 1; font-size: 15px; }
+  .tf-item span { flex: 1; font-size: 15px; min-width: 200px; }
   .tf-btn {
     padding: 8px 16px;
     border: 2px solid #e2e8f0;
@@ -155,6 +157,7 @@
     cursor: pointer;
     transition: all 0.2s;
     margin-top: 16px;
+    margin-right: 8px;
   }
   .btn:hover { background: #5568d3; transform: translateY(-1px); }
   .btn.secondary {
@@ -175,95 +178,128 @@
   .result.good { background: #c6f6d5; color: #22543d; }
   .result.bad { background: #fed7d7; color: #742a2a; }
 
-  .vocab-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 10px;
-  }
-  .vocab-card {
-    background: #f7fafc;
-    padding: 12px;
+  .collapsible-text {
+    display: none;
+    margin-bottom: 20px;
+    border: 1px solid #e2e8f0;
     border-radius: 8px;
+    padding: 16px;
+    background: #fafbfc;
     font-size: 14px;
-    border-left: 3px solid #667eea;
+    line-height: 1.7;
   }
-  .vocab-card b { color: #667eea; }
+  .collapsible-text.show { display: block; }
 </style>
 </head>
 <body>
 <div class="container">
 
   <header>
-    <h1>📘 A Big Change</h1>
-    <p>English Lesson · Vocabulary · Dialogue · Practice</p>
+    <h1>📘 The Event Planner</h1>
+    <p>Reading · Vocabulary · Grammar Practice</p>
   </header>
 
   <div class="tabs">
-    <div class="tab active" onclick="showTab('dialogue')">📖 Dialogue</div>
-    <div class="tab" onclick="showTab('vocab')">🔤 Vocabulary</div>
+    <div class="tab active" onclick="showTab('text')">📖 Text</div>
+    <div class="tab" onclick="showTab('match')">🔗 Matching</div>
     <div class="tab" onclick="showTab('tf')">✅ True/False</div>
     <div class="tab" onclick="showTab('gap')">✏️ Gap-fill</div>
+    <div class="tab" onclick="showTab('grammar')">📝 Open the brackets</div>
   </div>
 
-  <!-- DIALOGUE -->
-  <div class="section active" id="dialogue">
-    <h2>Dialogue: A Big Change</h2>
-    <div class="dialogue">
-      <p><span class="speaker">Mark:</span> Anna, I heard something. Is it true? Are you really leaving?</p>
-      <p><span class="speaker">Anna:</span> Yes, Mark. I told my boss yesterday that <span class="phrase">I'm quitting</span>.</p>
-      <p><span class="speaker">Mark:</span> Wow. How did it go?</p>
-      <p><span class="speaker">Anna:</span> <span class="phrase">It went fine</span>. But he's not very happy. He will probably not <span class="phrase">hire anyone new</span>, so <span class="phrase">it's going to be hard for them</span> without me.</p>
-      <p><span class="speaker">Mark:</span> That's true. You do a lot. So, what's next?</p>
-      <p><span class="speaker">Anna:</span> I found a new job. I will have <span class="phrase">new responsibilities</span>. My main task is to <span class="phrase">make a landing page more user-friendly</span> and to <span class="phrase">encourage companies to buy a subscription</span>.</p>
-      <p><span class="speaker">Mark:</span> That sounds interesting. Will you work from the office?</p>
-      <p><span class="speaker">Anna:</span> I hope I will <span class="phrase">work remotely</span>. But there's one problem. My new team <span class="phrase">consists of men only</span>, and <span class="phrase">I'm not happy</span>.</p>
-      <p><span class="speaker">Mark:</span> Really? Why not?</p>
-      <p><span class="speaker">Anna:</span> I don't know. I just prefer a mixed team. It's easier for me to communicate.</p>
-      <p><span class="speaker">Mark:</span> I understand. By the way, have you heard the news about Yandex?</p>
-      <p><span class="speaker">Anna:</span> Yes. Bad news about Yandex <span class="phrase">created a bad atmosphere</span> in our company. Everyone is nervous. People are looking for new jobs.</p>
-      <p><span class="speaker">Mark:</span> I know. <span class="phrase">In today's world</span> we <span class="phrase">can't really plan anything</span>. There are too many difficult problems.</p>
-      <p><span class="speaker">Anna:</span> Exactly. That's why I decided to leave. I want a quieter life. <span class="phrase">I don't miss this rush and long distances</span> in Moscow.</p>
-      <p><span class="speaker">Mark:</span> But you're <span class="phrase">often late for things</span>! How will you manage?</p>
-      <p><span class="speaker">Anna:</span> I know. <span class="phrase">I'm often late</span>. But I <span class="phrase">never forget things</span>. I'm too responsible. So I always finish what I start.</p>
-      <p><span class="speaker">Mark:</span> How do you deal with stress?</p>
-      <p><span class="speaker">Anna:</span> <span class="phrase">If I'm stressed</span>, I <span class="phrase">make a list of things which I did</span>. It helps me <span class="phrase">to stay active</span>. <span class="phrase">My priority is to stay active</span> and not to stop.</p>
-      <p><span class="speaker">Mark:</span> That's a good strategy.</p>
-      <p><span class="speaker">Anna:</span> I also believe: <span class="phrase">if I delay things I don't like, I won't develop</span>. You need <span class="phrase">to get out of your comfort zone</span>.</p>
-      <p><span class="speaker">Mark:</span> You're right. Good luck, Anna. I'll miss you.</p>
-      <p><span class="speaker">Anna:</span> Thank you, Mark. I'll miss you too. But it's time for a new chapter.</p>
+  <!-- TEXT -->
+  <div class="section active" id="text">
+    <h2>The Event Planner</h2>
+    <div class="text-box">
+      <p>Chloe is an event planner. She organizes concerts and theater performances. Right now, she is preparing for a big music festival. She arranged a lot of meetings this week with musicians, technicians, and sponsors. Her schedule is crazy, so she has to write down every task in her planner to remember all her appointments.</p>
+      <p>Last year was very different. Chloe was looking for a job for 4 months. It was a hard time. She saw a position on a job website, applied for the job, and got it.</p>
+      <p>Chloe loves her job, but it is very stressful. Sometimes she thinks: "You will have a mental breakdown if you don't take a break." So she always tries to take at least one day off.</p>
+      <p>Chloe is usually a very organized person, but she hates one thing: housework. She always delays cleaning. She cleans only every two weeks because she simply doesn't have time for it.</p>
+      <p>Her friends say she works too much. But Chloe remembers her university days. Before her first big exam, she and her friends stayed up all night trying to learn all the theory in one night. Now she never stays up late to finish her tasks anymore.</p>
+      <p>This year, Chloe is also planning a trip to Italy with her boyfriend. They were supposed to fly tomorrow, but their flight was cancelled. So now they will fly in 2 days.</p>
+      <p>When they are in Italy, Chloe wants to forget about work completely. In Italy, she doesn't rush at all. She just drinks coffee and walks slowly. But at home in London, she and her boyfriend have a funny rule. They share time management with each other. And if they are late for a dinner, they are always late together.</p>
+      <p>After her vacation, Chloe will return to work. She already knows what she will do. She has new tools to increase ticket sales, and she is ready to make this festival the best one ever.</p>
     </div>
   </div>
 
-  <!-- VOCABULARY -->
-  <div class="section" id="vocab">
-    <h2>Vocabulary. Match the phrase with the translation</h2>
-    <p style="margin-bottom:16px; color:#718096; font-size:14px;">Выбери перевод из выпадающего списка.</p>
-    <div id="vocabList"></div>
-    <button class="btn" onclick="checkVocab()">Проверить</button>
-    <div class="result" id="vocabResult"></div>
+  <!-- MATCHING -->
+  <div class="section" id="match">
+    <h2>Task 1. Vocabulary Matching</h2>
+    <p style="margin-bottom:16px; color:#718096; font-size:14px;">Соедини слово с переводом.</p>
+    
+    <button class="btn secondary" onclick="toggleText('textMatch', 'btnMatch')" id="btnMatch" style="margin-bottom: 16px; margin-top: 0;">👁 Показать текст</button>
+    <div class="collapsible-text" id="textMatch"></div>
+
+    <div id="matchList"></div>
+    <button class="btn" onclick="checkMatch()">Проверить</button>
+    <button class="btn secondary" onclick="resetMatch()">Сбросить</button>
+    <div class="result" id="matchResult"></div>
   </div>
 
   <!-- TRUE/FALSE -->
   <div class="section" id="tf">
-    <h2>True or False</h2>
+    <h2>Task 2. True or False</h2>
     <p style="margin-bottom:16px; color:#718096; font-size:14px;">Выбери T (правда) или F (ложь).</p>
+    
+    <button class="btn secondary" onclick="toggleText('textTF', 'btnTF')" id="btnTF" style="margin-bottom: 16px; margin-top: 0;">👁 Показать текст</button>
+    <div class="collapsible-text" id="textTF"></div>
+
     <div id="tfList"></div>
     <button class="btn" onclick="checkTF()">Проверить</button>
+    <button class="btn secondary" onclick="resetTF()">Сбросить</button>
     <div class="result" id="tfResult"></div>
   </div>
 
   <!-- GAP-FILL -->
   <div class="section" id="gap">
-    <h2>Gap-fill</h2>
-    <p style="margin-bottom:16px; color:#718096; font-size:14px;">Впиши пропущенное слово или фразу.</p>
+    <h2>Task 3. Gap-fill</h2>
+    <p style="margin-bottom:16px; color:#718096; font-size:14px;">Впиши пропущенное слово или фразу. Опечатки и сокращения принимаются.</p>
+    
+    <button class="btn secondary" onclick="toggleText('textGap', 'btnGap')" id="btnGap" style="margin-bottom: 16px; margin-top: 0;">👁 Показать текст</button>
+    <div class="collapsible-text" id="textGap"></div>
+
     <div id="gapList"></div>
     <button class="btn" onclick="checkGap()">Проверить</button>
+    <button class="btn secondary" onclick="resetGap()">Сбросить</button>
     <div class="result" id="gapResult"></div>
+  </div>
+
+  <!-- GRAMMAR -->
+  <div class="section" id="grammar">
+    <h2>Task 4. Open the brackets</h2>
+    <p style="margin-bottom:16px; color:#718096; font-size:14px;">Поставь глагол в Present Simple или Present Continuous.</p>
+    
+    <button class="btn secondary" onclick="toggleText('textGrammar', 'btnGrammar')" id="btnGrammar" style="margin-bottom: 16px; margin-top: 0;">👁 Показать текст</button>
+    <div class="collapsible-text" id="textGrammar"></div>
+
+    <div id="grammarList"></div>
+    <button class="btn" onclick="checkGrammar()">Проверить</button>
+    <button class="btn secondary" onclick="resetGrammar()">Сбросить</button>
+    <div class="result" id="grammarResult"></div>
   </div>
 
 </div>
 
 <script>
+// ===== TEXT DATA =====
+const fullTextHTML = `
+  <p>Chloe is an event planner. She organizes concerts and theater performances. Right now, she is preparing for a big music festival. She arranged a lot of meetings this week with musicians, technicians, and sponsors. Her schedule is crazy, so she has to write down every task in her planner to remember all her appointments.</p>
+  <p>Last year was very different. Chloe was looking for a job for 4 months. It was a hard time. She saw a position on a job website, applied for the job, and got it.</p>
+  <p>Chloe loves her job, but it is very stressful. Sometimes she thinks: "You will have a mental breakdown if you don't take a break." So she always tries to take at least one day off.</p>
+  <p>Chloe is usually a very organized person, but she hates one thing: housework. She always delays cleaning. She cleans only every two weeks because she simply doesn't have time for it.</p>
+  <p>Her friends say she works too much. But Chloe remembers her university days. Before her first big exam, she and her friends stayed up all night trying to learn all the theory in one night. Now she never stays up late to finish her tasks anymore.</p>
+  <p>This year, Chloe is also planning a trip to Italy with her boyfriend. They were supposed to fly tomorrow, but their flight was cancelled. So now they will fly in 2 days.</p>
+  <p>When they are in Italy, Chloe wants to forget about work completely. In Italy, she doesn't rush at all. She just drinks coffee and walks slowly. But at home in London, she and her boyfriend have a funny rule. They share time management with each other. And if they are late for a dinner, they are always late together.</p>
+  <p>After her vacation, Chloe will return to work. She already knows what she will do. She has new tools to increase ticket sales, and she is ready to make this festival the best one ever.</p>
+`;
+
+// Inject text into all collapsible boxes
+document.addEventListener("DOMContentLoaded", () => {
+  ['textTF', 'textGap', 'textGrammar', 'textMatch'].forEach(id => {
+    document.getElementById(id).innerHTML = fullTextHTML;
+  });
+});
+
 // ===== TABS =====
 function showTab(name) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -272,78 +308,146 @@ function showTab(name) {
   event.target.classList.add('active');
 }
 
-// ===== VOCABULARY DATA =====
-const vocabData = [
-  { phrase: "I'm quitting", correct: "я увольняюсь" },
-  { phrase: "It went fine", correct: "всё прошло нормально" },
-  { phrase: "hire anyone new", correct: "нанять кого-то нового" },
-  { phrase: "It's going to be hard for them", correct: "им будет тяжело" },
-  { phrase: "new responsibilities", correct: "новые обязанности" },
-  { phrase: "make a landing page more user-friendly", correct: "сделать лендинг удобнее" },
-  { phrase: "encourage companies to buy a subscription", correct: "мотивировать компании купить подписку" },
-  { phrase: "work remotely", correct: "работать удалённо" },
-  { phrase: "consists of men only", correct: "состоит только из мужчин" },
-  { phrase: "I'm not happy", correct: "мне это не нравится" },
-  { phrase: "created a bad atmosphere", correct: "создало плохую атмосферу" },
-  { phrase: "I'm often late", correct: "я часто опаздываю" },
-  { phrase: "I never forget things", correct: "я ничего не забываю" },
-  { phrase: "I don't miss this rush and long distances", correct: "я не скучаю по суете и долгим поездкам" },
-  { phrase: "If I'm stressed", correct: "если я в стрессе" },
-  { phrase: "make a list of things which I did", correct: "составить список того, что сделала" },
-  { phrase: "In today's world", correct: "в современном мире" },
-  { phrase: "we can't really plan anything", correct: "мы не можем ничего планировать" },
-  { phrase: "My priority is to stay active", correct: "моя цель — оставаться активной" },
-  { phrase: "If I delay things I don't like, I won't develop", correct: "если я откладываю, я не развиваюсь" },
-  { phrase: "to get out of your comfort zone", correct: "выйти из зоны комфорта" }
+// ===== TOGGLE TEXT =====
+function toggleText(boxId, btnId) {
+  const box = document.getElementById(boxId);
+  const btn = document.getElementById(btnId);
+  if (box.classList.contains('show')) {
+    box.classList.remove('show');
+    btn.textContent = '👁 Показать текст';
+  } else {
+    box.classList.add('show');
+    btn.textContent = '🙈 Скрыть текст';
+  }
+}
+
+// ===== FUZZY MATCHING =====
+function normalize(str) {
+  return str.toLowerCase().trim().replace(/[’']/g, "'").replace(/[.,!?;:]/g, '').replace(/\s+/g, ' ');
+}
+
+function levenshtein(a, b) {
+  const matrix = [];
+  for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+  for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) === a.charAt(j - 1)) matrix[i][j] = matrix[i - 1][j - 1];
+      else matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j] + 1);
+    }
+  }
+  return matrix[b.length][a.length];
+}
+
+function expandContractions(s) {
+  return s
+    .replace(/\bi'm\b/g, 'i am').replace(/\bi've\b/g, 'i have').replace(/\bi'd\b/g, 'i would').replace(/\bi'll\b/g, 'i will')
+    .replace(/\byou're\b/g, 'you are').replace(/\byou've\b/g, 'you have').replace(/\byou'd\b/g, 'you would').replace(/\byou'll\b/g, 'you will')
+    .replace(/\bhe's\b/g, 'he is').replace(/\bhe'd\b/g, 'he would').replace(/\bhe'll\b/g, 'he will')
+    .replace(/\bshe's\b/g, 'she is').replace(/\bshe'd\b/g, 'she would').replace(/\bshe'll\b/g, 'she will')
+    .replace(/\bit's\b/g, 'it is').replace(/\bit'd\b/g, 'it would').replace(/\bit'll\b/g, 'it will')
+    .replace(/\bwe're\b/g, 'we are').replace(/\bwe've\b/g, 'we have').replace(/\bwe'd\b/g, 'we would').replace(/\bwe'll\b/g, 'we will')
+    .replace(/\bthey're\b/g, 'they are').replace(/\bthey've\b/g, 'they have').replace(/\bthey'd\b/g, 'they would').replace(/\bthey'll\b/g, 'they will')
+    .replace(/\bthat's\b/g, 'that is').replace(/\bthere's\b/g, 'there is')
+    .replace(/\bcan't\b/g, 'cannot').replace(/\bwon't\b/g, 'will not')
+    .replace(/\bdon't\b/g, 'do not').replace(/\bdoesn't\b/g, 'does not').replace(/\bdidn't\b/g, 'did not')
+    .replace(/\bisn't\b/g, 'is not').replace(/\baren't\b/g, 'are not')
+    .replace(/\bwasn't\b/g, 'was not').replace(/\bweren't\b/g, 'were not')
+    .replace(/\bhaven't\b/g, 'have not').replace(/\bhasn't\b/g, 'has not').replace(/\bhadn't\b/g, 'had not')
+    .replace(/\bwouldn't\b/g, 'would not').replace(/\bcouldn't\b/g, 'could not').replace(/\bshouldn't\b/g, 'should not');
+}
+
+function isClose(userAnswer, correctAnswer) {
+  const u = normalize(userAnswer);
+  const c = normalize(correctAnswer);
+  if (u === c) return true;
+  const uExpanded = expandContractions(u);
+  const cExpanded = expandContractions(c);
+  if (uExpanded === cExpanded) return true;
+  const maxDist = cExpanded.length <= 5 ? 1 : cExpanded.length <= 12 ? 2 : 3;
+  return levenshtein(uExpanded, cExpanded) <= maxDist;
+}
+
+// ===== MATCHING =====
+const matchData = [
+  { phrase: "event planner", correct: "организатор мероприятий" },
+  { phrase: "performances", correct: "представления, выступления" },
+  { phrase: "appointments", correct: "встреча, приём (по записи)" },
+  { phrase: "looking for a job", correct: "искать работу" },
+  { phrase: "applied for", correct: "подать заявку (на работу)" },
+  { phrase: "mental breakdown", correct: "нервный срыв" },
+  { phrase: "delay", correct: "откладывать (на потом)" },
+  { phrase: "stayed up all night", correct: "не спать всю ночь" },
+  { phrase: "tools", correct: "инструменты (для работы)" },
+  { phrase: "completely", correct: "полностью, совсем" },
+  { phrase: "share", correct: "делить (что-то с кем-то)" },
+  { phrase: "was supposed to", correct: "должен был (по плану)" }
 ];
 
-const translations = vocabData.map(v => v.correct).sort(() => Math.random() - 0.5);
+const translations = matchData.map(v => v.correct).sort(() => Math.random() - 0.5);
 
-const vocabList = document.getElementById('vocabList');
-vocabData.forEach((item, i) => {
+const matchList = document.getElementById('matchList');
+matchData.forEach((item, i) => {
   const div = document.createElement('div');
   div.className = 'task-item';
-  div.id = 'vocab-' + i;
+  div.id = 'match-' + i;
   div.innerHTML = `
-    <span style="flex:1; font-weight:600;">${item.phrase}</span>
-    <select id="vocabSel-${i}">
-      <option value="">— выбери —</option>
+    <span style="flex:1; font-weight:600;">${i+1}. ${item.phrase}</span>
+    <select id="matchSel-${i}">
+      <option value="">— выбери перевод —</option>
       ${translations.map(t => `<option value="${t}">${t}</option>`).join('')}
     </select>
   `;
-  vocabList.appendChild(div);
+  matchList.appendChild(div);
 });
 
-function checkVocab() {
+function checkMatch() {
   let correct = 0;
-  vocabData.forEach((item, i) => {
-    const sel = document.getElementById('vocabSel-' + i);
-    const div = document.getElementById('vocab-' + i);
+  matchData.forEach((item, i) => {
+    const sel = document.getElementById('matchSel-' + i);
+    const div = document.getElementById('match-' + i);
     div.classList.remove('correct', 'wrong');
-    if (sel.value === item.correct) {
-      div.classList.add('correct');
-      correct++;
-    } else if (sel.value) {
+    const old = div.querySelector('.correct-answer');
+    if (old) old.remove();
+    if (sel.value === item.correct) { div.classList.add('correct'); correct++; }
+    else if (sel.value) {
       div.classList.add('wrong');
+      const ans = document.createElement('div');
+      ans.className = 'correct-answer';
+      ans.textContent = item.correct;
+      div.appendChild(ans);
     }
   });
-  const res = document.getElementById('vocabResult');
-  res.className = 'result show ' + (correct === vocabData.length ? 'good' : 'bad');
-  res.textContent = `Правильно: ${correct} из ${vocabData.length}`;
+  const res = document.getElementById('matchResult');
+  res.className = 'result show ' + (correct === matchData.length ? 'good' : 'bad');
+  res.textContent = `Правильно: ${correct} из ${matchData.length}`;
 }
 
-// ===== TRUE/FALSE DATA =====
+function resetMatch() {
+  matchData.forEach((_, i) => {
+    document.getElementById('matchSel-' + i).value = '';
+    const div = document.getElementById('match-' + i);
+    div.classList.remove('correct', 'wrong');
+    const old = div.querySelector('.correct-answer');
+    if (old) old.remove();
+  });
+  document.getElementById('matchResult').className = 'result';
+}
+
+// ===== TRUE/FALSE =====
 const tfData = [
-  { text: "Anna told her boss that she's quitting.", correct: "T" },
-  { text: "It went badly.", correct: "F" },
-  { text: "Anna's boss will hire two new people.", correct: "F" },
-  { text: "Anna will have new responsibilities.", correct: "T" },
-  { text: "Anna's new team consists of women only.", correct: "F" },
-  { text: "Anna is happy about her new team.", correct: "F" },
-  { text: "Bad news about Yandex created a bad atmosphere.", correct: "T" },
-  { text: "Anna is often late for things, but she never forgets things.", correct: "T" },
-  { text: "Anna misses the rush and long distances in Moscow.", correct: "F" },
-  { text: "Anna's priority is to stay active.", correct: "T" }
+  { text: "Chloe is an event planner.", correct: "T" },
+  { text: "She arranged a few meetings this week.", correct: "F" },
+  { text: "She was looking for a job for 6 months.", correct: "F" },
+  { text: "She applied for a job on a job website.", correct: "T" },
+  { text: "She loves cleaning and does it every day.", correct: "F" },
+  { text: "In university, she stayed up all night before an exam.", correct: "T" },
+  { text: "She often stays up late to finish her tasks now.", correct: "F" },
+  { text: "They were supposed to fly to Italy tomorrow, but the flight was cancelled.", correct: "T" },
+  { text: "They will fly to Italy in two days.", correct: "T" },
+  { text: "In Italy, she doesn't rush at all.", correct: "T" },
+  { text: "She and her boyfriend share time management.", correct: "T" },
+  { text: "She has new tools to increase ticket sales.", correct: "T" }
 ];
 
 const tfList = document.getElementById('tfList');
@@ -372,11 +476,15 @@ function checkTF() {
   tfData.forEach((item, i) => {
     const div = document.getElementById('tf-' + i);
     div.classList.remove('correct', 'wrong');
-    if (tfAnswers[i] === item.correct) {
-      div.classList.add('correct');
-      correct++;
-    } else if (tfAnswers[i]) {
+    const old = div.querySelector('.correct-answer');
+    if (old) old.remove();
+    if (tfAnswers[i] === item.correct) { div.classList.add('correct'); correct++; }
+    else if (tfAnswers[i]) {
       div.classList.add('wrong');
+      const ans = document.createElement('div');
+      ans.className = 'correct-answer';
+      ans.textContent = item.correct === 'T' ? 'True' : 'False';
+      div.appendChild(ans);
     }
   });
   const res = document.getElementById('tfResult');
@@ -384,27 +492,33 @@ function checkTF() {
   res.textContent = `Правильно: ${correct} из ${tfData.length}`;
 }
 
-// ===== GAP-FILL DATA =====
+function resetTF() {
+  Object.keys(tfAnswers).forEach(k => delete tfAnswers[k]);
+  tfData.forEach((_, i) => {
+    document.getElementById('tfT-' + i).classList.remove('selected');
+    document.getElementById('tfF-' + i).classList.remove('selected');
+    const div = document.getElementById('tf-' + i);
+    div.classList.remove('correct', 'wrong');
+    const old = div.querySelector('.correct-answer');
+    if (old) old.remove();
+  });
+  document.getElementById('tfResult').className = 'result';
+}
+
+// ===== GAP-FILL =====
 const gapData = [
-  { before: "Anna told her boss that", after: ".", correct: "she's quitting" },
-  { before: "", after: "but her boss is not very happy.", correct: "It went fine" },
-  { before: "He will probably not", after: ".", correct: "hire anyone new" },
-  { before: "It's going to be", after: "for them.", correct: "hard" },
-  { before: "Anna will have new", after: ".", correct: "responsibilities" },
-  { before: "Her task is to make a landing page more", after: ".", correct: "user-friendly" },
-  { before: "She wants to", after: "companies to buy a subscription.", correct: "encourage" },
-  { before: "She hopes she will work", after: ".", correct: "remotely" },
-  { before: "Her new team", after: "men only.", correct: "consists of" },
-  { before: "And she's not", after: ".", correct: "happy" },
-  { before: "Bad news about Yandex", after: "a bad atmosphere.", correct: "created" },
-  { before: "Anna is too responsible and she never", after: "things.", correct: "forgets" },
-  { before: "But she is often", after: "for things.", correct: "late" },
-  { before: "She doesn't miss this", after: "and long distances in Moscow.", correct: "rush" },
-  { before: "If she's", after: ", she makes a list of things which she did.", correct: "stressed" },
-  { before: "In", after: "world we can't really plan anything.", correct: "today's" },
-  { before: "Her priority is to", after: "active.", correct: "stay" },
-  { before: "If she delays things she doesn't like, she won't", after: ".", correct: "develop" },
-  { before: "You need to get out of your", after: "zone.", correct: "comfort" }
+  { before: "Right now, she is preparing for a big music festival. She", after: "this week.", correct: "arranged a lot of meetings" },
+  { before: "She has to write down every task to remember all her", after: ".", correct: "appointments" },
+  { before: "Last year, Chloe", after: "for 4 months.", correct: "was looking for a job" },
+  { before: "She saw a position on a website and", after: "the job.", correct: "applied for" },
+  { before: "She thinks: \"You will", after: "if you don't take a break.\"", correct: "have a mental breakdown" },
+  { before: "She always", after: "because she doesn't have time.", correct: "delays cleaning" },
+  { before: "Before her first big exam, she and her friends", after: ".", correct: "stayed up all night" },
+  { before: "Now she never", after: "to finish her tasks.", correct: "stays up late" },
+  { before: "They", after: "to Italy tomorrow, but their flight was cancelled.", correct: "were supposed to fly" },
+  { before: "In Italy,", after: "— she just drinks coffee and walks slowly.", correct: "she doesn't rush at all" },
+  { before: "She and her boyfriend", after: "with each other.", correct: "share time management" },
+  { before: "She has new", after: "ticket sales.", correct: "tools to increase" }
 ];
 
 const gapList = document.getElementById('gapList');
@@ -412,9 +526,7 @@ gapData.forEach((item, i) => {
   const div = document.createElement('div');
   div.className = 'task-item';
   div.id = 'gap-' + i;
-  div.innerHTML = `
-    <span style="flex:1;">${item.before} <input type="text" id="gapIn-${i}" placeholder="..."> ${item.after}</span>
-  `;
+  div.innerHTML = `<span style="flex:1;">${item.before} <input type="text" id="gapIn-${i}" placeholder="..."> ${item.after}</span>`;
   gapList.appendChild(div);
 });
 
@@ -424,17 +536,101 @@ function checkGap() {
     const inp = document.getElementById('gapIn-' + i);
     const div = document.getElementById('gap-' + i);
     div.classList.remove('correct', 'wrong');
-    const val = inp.value.trim().toLowerCase();
-    if (val === item.correct.toLowerCase()) {
-      div.classList.add('correct');
-      correct++;
-    } else if (val) {
+    const old = div.querySelector('.correct-answer');
+    if (old) old.remove();
+    const val = inp.value.trim();
+    if (val && isClose(val, item.correct)) { div.classList.add('correct'); correct++; }
+    else if (val) {
       div.classList.add('wrong');
+      const ans = document.createElement('div');
+      ans.className = 'correct-answer';
+      ans.textContent = item.correct;
+      div.appendChild(ans);
     }
   });
   const res = document.getElementById('gapResult');
   res.className = 'result show ' + (correct === gapData.length ? 'good' : 'bad');
   res.textContent = `Правильно: ${correct} из ${gapData.length}`;
+}
+
+function resetGap() {
+  gapData.forEach((_, i) => {
+    document.getElementById('gapIn-' + i).value = '';
+    const div = document.getElementById('gap-' + i);
+    div.classList.remove('correct', 'wrong');
+    const old = div.querySelector('.correct-answer');
+    if (old) old.remove();
+  });
+  document.getElementById('gapResult').className = 'result';
+}
+
+// ===== GRAMMAR =====
+const grammarData = [
+  { text: "Chloe [1] (be) an event planner. She [2] (organize) concerts and theater performances.", ans1: "is", ans2: "organizes" },
+  { text: "Right now, she [1] (prepare) for a big music festival. She [2] (arrange) a lot of meetings this week.", ans1: "is preparing", ans2: "is arranging" },
+  { text: "Her schedule is crazy, so she always [1] (write) down every task in her planner. She [2] (try) not to forget about appointments.", ans1: "writes", ans2: "tries" },
+  { text: "Chloe usually [1] (not / rush) at all. She just [2] (drink) coffee and walks slowly.", ans1: "doesn't rush", ans2: "drinks" },
+  { text: "She [1] (hate) housework. She always [2] (delay) cleaning and cleans only every two weeks.", ans1: "hates", ans2: "delays" },
+  { text: "Look at her! She [1] (stay) up late to finish her tasks right now, though she usually [2] (not / do) it anymore.", ans1: "is staying", ans2: "doesn't do" },
+  { text: "This year, Chloe [1] (plan) a trip to Italy. She and her boyfriend [2] (fly) in 2 days.", ans1: "is planning", ans2: "are flying" },
+  { text: "At home in London, she and her boyfriend [1] (share) time management. They [2] (be) always late together.", ans1: "share", ans2: "are" },
+  { text: "After her vacation, she [1] (return) to work. She already [2] (know) what she will do.", ans1: "returns", ans2: "knows" },
+  { text: "She [1] (have) new tools to increase ticket sales, and she [2] (want) to make this festival the best one ever.", ans1: "has", ans2: "wants" }
+];
+
+const grammarList = document.getElementById('grammarList');
+grammarData.forEach((item, i) => {
+  const div = document.createElement('div');
+  div.className = 'task-item';
+  div.id = 'gram-' + i;
+  
+  let formattedText = item.text
+    .replace('[1]', `<input type="text" id="gramIn1-${i}" placeholder="..." style="width:100px; margin:0 4px; flex:none;">`)
+    .replace('[2]', `<input type="text" id="gramIn2-${i}" placeholder="..." style="width:100px; margin:0 4px; flex:none;">`);
+
+  div.innerHTML = `<span style="flex:1; line-height:2.2;">${i+1}. ${formattedText}</span>`;
+  grammarList.appendChild(div);
+});
+
+function checkGrammar() {
+  let correct = 0;
+  grammarData.forEach((item, i) => {
+    const inp1 = document.getElementById('gramIn1-' + i);
+    const inp2 = document.getElementById('gramIn2-' + i);
+    const div = document.getElementById('gram-' + i);
+    div.classList.remove('correct', 'wrong');
+    const old = div.querySelector('.correct-answer');
+    if (old) old.remove();
+    
+    const val1 = inp1.value.trim();
+    const val2 = inp2.value.trim();
+    const ok1 = val1 && isClose(val1, item.ans1);
+    const ok2 = val2 && isClose(val2, item.ans2);
+    
+    if (ok1 && ok2) { div.classList.add('correct'); correct++; }
+    else if (val1 || val2) {
+      div.classList.add('wrong');
+      const ans = document.createElement('div');
+      ans.className = 'correct-answer';
+      ans.textContent = `${item.ans1} / ${item.ans2}`;
+      div.appendChild(ans);
+    }
+  });
+  const res = document.getElementById('grammarResult');
+  res.className = 'result show ' + (correct === grammarData.length ? 'good' : 'bad');
+  res.textContent = `Правильно: ${correct} из ${grammarData.length}`;
+}
+
+function resetGrammar() {
+  grammarData.forEach((_, i) => {
+    document.getElementById('gramIn1-' + i).value = '';
+    document.getElementById('gramIn2-' + i).value = '';
+    const div = document.getElementById('gram-' + i);
+    div.classList.remove('correct', 'wrong');
+    const old = div.querySelector('.correct-answer');
+    if (old) old.remove();
+  });
+  document.getElementById('grammarResult').className = 'result';
 }
 </script>
 </body>
